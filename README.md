@@ -99,9 +99,9 @@ note-app/
 
 ## Acknowledgments:
 
-[Next.js Documentation](https://nextjs.org/docs)
-[Supabase Documentation](https://supabase.com/docs)
-[Prisma Documentation](https://www.prisma.io/docs)
-[NextAuth.js Documentation](https://next-auth.js.org/getting-started/introduction)
-[Tailwind CSS Documentation](https://tailwindcss.com/docs/installation/using-vite)
-[Vercel AI SDK Documentation](https://sdk.vercel.ai/docs/introduction)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Supabase Documentation](https://supabase.com/docs)
+- [Prisma Documentation](https://www.prisma.io/docs)
+- [NextAuth.js Documentation](https://next-auth.js.org/getting-started/introduction)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs/installation/using-vite)
+- [Vercel AI SDK Documentation](https://sdk.vercel.ai/docs/introduction)
