@@ -27,9 +27,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
       {/* className={`${geistSans.variable} ${geistMono.variable} antialiased "grid grid-rows-[20px_1fr_20px] items-center 
         justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]"`} */}
-      <body className="flex flex-col min-h-screen">
+      <body className="flex flex-col min-h-screen ">
         <Header />
         <main className="flex-1 overflow-auto">
           <Body />

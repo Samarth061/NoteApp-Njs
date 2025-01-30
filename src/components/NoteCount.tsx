@@ -3,5 +3,5 @@ type NoteCountProps = {
 };
 
 export default function NoteCount(noteCount: NoteCountProps) {
-  return <div>NoteCount</div>;
+  return <div className=" text-white p-1">NoteCount</div>;
 }

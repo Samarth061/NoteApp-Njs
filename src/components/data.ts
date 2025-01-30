@@ -22,14 +22,16 @@ export const mockNotes: Note[] = [
       description: "Ingredients: 2 1/4 cups flour, 1 tsp baking soda, ...",
     },
     {
-      id: 4,
-      title: "Book Review: 'The Alchemist'",
-      description:
-        "An inspiring tale about following one's dreams. Key themes include...",
+    id: 4,
+    title: "Book Review: 'The Alchemist'",
+    description:
+      "An inspiring tale about following one's dreams. Key themes include...",
     },
     {
-      id: 5,
-      title: "Workout Plan",
-      description: "Monday: Chest and Triceps, Tuesday: Back and Biceps, ...",
+    id: 5,
+    title: "Workout Plan",
+    description: "Monday: Chest and Triceps, Tuesday: Back and Biceps, ...",
     },
   ];
+  
+  
