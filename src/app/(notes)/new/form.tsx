@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Title from "./components/Title";
+import Content from "./components/Content";
 
 export default function NoteForm() {
   // Dummy data for testing
@@ -16,30 +18,11 @@ export default function NoteForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <label className="block text-sm font-medium">Title</label>
-        <input
-          type="text"
-          className="w-full p-2 border rounded"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </div>
-      <div>
-        <label className="block text-sm font-medium">Content</label>
-        <textarea
-          className="w-full p-2 border rounded"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
-      </div>
-      <button
-        type="submit"
-        className="px-4 py-2 bg-blue-500 text-white rounded"
-      >
-        Save Note
-      </button>
-    </form>
+    <div className="pl-1">
+      <form onSubmit={handleSubmit} className="space-y-4 h-full ">
+        <Title title={title} setTitle={setTitle} />
+        <Content content={content} setContent={setContent} />
+      </form>
+    </div>
   );
 }
