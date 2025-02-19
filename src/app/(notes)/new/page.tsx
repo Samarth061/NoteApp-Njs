@@ -1,6 +1,6 @@
 "use client";
 
-import { NoteForm } from ".";
+import NoteForm from "./form";
 
 export default function NewNotePage() {
   return (

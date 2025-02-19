@@ -1,5 +1,8 @@
+"use client";
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { SessionProvider } from "next-auth/react";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -31,9 +34,11 @@ export default function RootLayout({
       </head>
       <body className="flex flex-col min-h-screen">
         <Header />
-        <main className="flex-1 overflow-auto">
-          {children} {/* This will render page-specific content */}
-        </main>
+        <SessionProvider>
+          <main className="flex-1 overflow-auto">
+            {children} {/* This will render page-specific content */}
+          </main>
+        </SessionProvider>
         <Footer />
       </body>
     </html>
