@@ -1,50 +1,45 @@
-// pages/api/notes.ts
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { getSession } from 'next-auth/react';
-import prisma from '@/lib/prisma';
+import { NextResponse } from "next/server";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import prisma from "@/lib/prisma";
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const session = await getSession({ req });
-  if (!session) {
-    return res.status(401).json({ message: 'Unauthorized' });
+export async function GET(req: Request) {
+  const session = await getServerSession(authOptions);
+  if (!session?.user?.id) {
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
 
-  // TypeScript may need a little help to know user.id is a string:
-  const userId = session.user?.id as string;
+  try {
+    const notes = await prisma.note.findMany({
+      where: { userId: session.user.id },
+      orderBy: { createdAt: "desc" },
+    });
+    return NextResponse.json(notes, { status: 200 });
+  } catch (error) {
+    console.error("Error fetching notes:", error);
+    return NextResponse.json({ error: "Error fetching notes" }, { status: 500 });
+  }
+}
 
-  if (req.method === 'GET') {
-    try {
-      // Fetch only the notes belonging to the current user
-      const notes = await prisma.note.findMany({
-        where: { userId },
-        orderBy: { createdAt: 'desc' },
-      });
-      return res.status(200).json(notes);
-    } catch (error) {
-      return res.status(500).json({ error: 'Error fetching notes' });
-    }
-  } else if (req.method === 'POST') {
-    const { title, content } = req.body;
+export async function POST(req: Request) {
+  const session = await getServerSession(authOptions);
+  if (!session?.user?.id) {
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+  }
+
+  try {
+    const { title, content } = await req.json();
     if (!content) {
-      return res.status(400).json({ message: 'Content is required' });
+      return NextResponse.json({ message: "Content is required" }, { status: 400 });
     }
-    try {
-      // Create a new note linked to the user
-      const note = await prisma.note.create({
-        data: {
-          title,
-          content,
-          userId,
-        },
-      });
-      return res.status(201).json(note);
-    } catch (error) {
-      return res.status(500).json({ error: 'Error creating note' });
-    }
-  } else {
-    res.setHeader('Allow', ['GET', 'POST']);
-    return res.status(405).end(`Method ${req.method} Not Allowed`);
-  }
-};
 
-export default handler;
+    const note = await prisma.note.create({
+      data: { title, content, userId: session.user.id },
+    });
+
+    return NextResponse.json(note, { status: 201 });
+  } catch (error) {
+    console.error("Error creating note:", error);
+    return NextResponse.json({ error: "Error creating note" }, { status: 500 });
+  }
+}

@@ -1,5 +1,6 @@
 // app/dashboard/page.tsx
 "use client";
+import Body from "@/components/Body";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -24,12 +25,7 @@ export default function Dashboard() {
     <div className="p-4">
       <h1>Welcome, {session.user?.name}</h1>
       <p>This is your dashboard.</p>
-      <button
-        onClick={() => signOut({ callbackUrl: "/signin" })}
-        className="mt-4 p-2 border rounded"
-      >
-        Sign out
-      </button>
+      <Body />
     </div>
   );
 }
