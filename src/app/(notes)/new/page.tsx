@@ -25,7 +25,7 @@ export default function NewNotePage() {
     });
 
     if (res.ok) {
-      router.push("/");
+      router.push("/dashboard");
     } else {
       const data = await res.json();
       setError(data.error || "Failed to create note.");

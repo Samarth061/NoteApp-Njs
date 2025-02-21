@@ -18,11 +18,12 @@ export const authOptions: NextAuthOptions = {
       strategy: "jwt",
     },
     debug: true,
+    
     callbacks: {
       async signIn({ user, account, profile }) {
         if (!account) return false; 
   
-        // Only run custom linking logic for Google
+        // Provider checker 
         if (account.provider === "google") {
           // Check if an Account record for this Google account exists
           const existingAccount = await prisma.account.findFirst({
@@ -67,12 +68,16 @@ export const authOptions: NextAuthOptions = {
         }
         return url;
       },
+
+      //Create a token and store id
       async jwt({ token, user }) {
         if (user) {
           token.id = user.id;
         }
         return token;
       },
+
+      //Decode the token to verify the user
       async session({ session, token }) {
         if (session.user) {
           session.user.id = token.id as string;

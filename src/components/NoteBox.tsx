@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
@@ -26,8 +24,11 @@ export default function NoteBox({
   useEffect(() => {
     async function fetchNotes() {
       try {
+        //Get request from notes API route
         const response = await fetch("/api/notes");
         if (!response.ok) throw new Error("Failed to fetch notes");
+
+        //Data stored as js object
         const data = await response.json();
         setNotes(data);
         setNoteCount(data.length);
@@ -41,8 +42,11 @@ export default function NoteBox({
     fetchNotes();
   }, [setNoteCount]);
 
-  const filteredNotes = notes.filter((note) =>
-    note.title.toLowerCase().includes(searchTerm.toLowerCase())
+  //Search filter to find notes
+  const filteredNotes = notes.filter(
+    (note) =>
+      note.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      note.content.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   if (loading) return <p>Loading notes...</p>;
@@ -53,7 +57,7 @@ export default function NoteBox({
       {filteredNotes.map((note) => (
         <div
           key={note.id}
-          className="p-4 border-2 rounded-md bg-[#0d0e0f] hover:border-blue-700 border-[#0a4d92] transition"
+          className="cursor-pointer p-4 border-2 rounded-md bg-[#0d0e0f] hover:border-blue-700 border-[#0a4d92] transition"
         >
           <h2 className="text-xl font-bold mb-2">{note.title}</h2>
           <p className="text-sm text-gray-400 mb-4">
@@ -62,9 +66,15 @@ export default function NoteBox({
               : note.content}
           </p>
           <div className="flex justify-between">
-            <button className="px-4 py-2 text-white bg-blue-500 rounded">
+            <Link
+              className="px-4 py-2 text-white bg-blue-500 rounded"
+              href={{
+                pathname: `/${note.id}`,
+                query: { id: note.id },
+              }}
+            >
               View
-            </button>
+            </Link>
             <button className="px-4 py-2 text-white bg-gray-500 rounded">
               Edit
             </button>
