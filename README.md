@@ -55,10 +55,10 @@ This is a simple note-taking application built with Next.js. It allows users to 
    Create a .env.local file in the root directory and add the following:
 
    ```bash
-   NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
-   NEXTAUTH_SECRET=your-nextauth-secret
-   AI_API_KEY=your-vercel-ai-api-key
+   NEXT_PUBLIC_SUPABASE_URL="your-supabase-url"
+   NEXT_PUBLIC_SUPABASE_ANON_KEY="your-supabase-anon-key"
+   NEXTAUTH_SECRET="your-nextauth-secret"
+   AI_API_KEY="your-vercel-ai-api-key"
    ```
 
    Create a .env file in the root directory and add the following:
@@ -69,7 +69,7 @@ This is a simple note-taking application built with Next.js. It allows users to 
 
    GOOGLE_CLIENT_ID="your-google-clientid"
    GOOGLE_CLIENT_SECRET="your-google-clientsecret"
-   NEXTAUTH_URL=http://localhost:3000
+   NEXTAUTH_URL="http://localhost:3000"
    ```
 
 4. **Set Up Prisma**:
@@ -112,18 +112,18 @@ note-app/
 │   │    ├── globals.tsx    # Global application settings or context
 │   │    ├── layout.tsx     # Main layout component that wraps around pages
 │   │    ├── middleware.tsx # Custom middleware for authentication or authorization
-│   │    ├── page.tsx       # Main entry point for rendering pages
-│
+│   │    └── page.tsx       # Main entry point for rendering pages
+|   |
 │   ├── lib/                # Library files for reusable logic or external configurations
 │   ├── components/         # Shared UI components (buttons, inputs, etc.)
 │   ├── types/              # Global types used throughout the app (TypeScript types)
-│   ├── utils/              # Utility functions (helpers, formatters, etc.)
+│   └── utils/              # Utility functions (helpers, formatters, etc.)
 │
 ├── prisma/                 # Prisma schema and migration files
-│
 ├── public/                 # Static assets (images, fonts, icons, etc.)
-│
 ├── env/                    # Environment variable configurations (for production and dev environments)
+└── .env.local              # Environment variables
+
 ```
 
 ## Acknowledgments:
