@@ -43,3 +43,30 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Error creating note" }, { status: 500 });
   }
 }
+
+export async function DELETE(req: Request) {
+  const session = await getServerSession(authOptions);
+  if (!session?.user?.id) {
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+  }
+
+  try {
+    const { id } = await req.json(); // Extract ID from the request body
+    if (!id) {
+      return NextResponse.json({ message: "Note ID is required" }, { status: 400 });
+    }
+
+    const deletedNote = await prisma.note.delete({
+      where: {
+        id,
+        userId: session.user.id, // Ensure user can only delete their own notes
+      },
+    });
+
+    return NextResponse.json({ message: "Note deleted", deletedNote }, { status: 200 });
+  } catch (error) {
+    console.error("Error deleting note:", error);
+    return NextResponse.json({ error: "Error deleting note" }, { status: 500 });
+  }
+}
+
