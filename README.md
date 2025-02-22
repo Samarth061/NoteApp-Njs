@@ -1,19 +1,27 @@
 # AI-Powered Note-Taking App
 
-This is a Next.js-based note-taking application. Currently, it’s a simple note app focusing on creating, editing, and saving notes. Future updates will introduce AI-powered features, collaboration, and more advanced functionality.
-
-In future it will leverages modern technologies such as Vercel AI SDK, Supabase, Prisma ORM, NextAuth.js, and Tailwind CSS to provide a seamless user experience.
+This is a simple note-taking application built with Next.js. It allows users to create, edit, and delete notes using REST API endpoints. While the app is currently focused on basic note management, future updates will incorporate AI-powered features to enhance note-taking and organization.
 
 ---
 
 ## Features
 
-- **AI-Powered Note Management**: Generate, summarize, and organize notes using AI.
-- **Real-Time Collaboration**: Share and collaborate on notes with others.
+- **Create Notes**: Add new notes with a title and content.
+- **Edit Notes**: Modify the title and content of existing notes
+- **Delete Notes**: Remove notes you no longer need.
 - **User Authentication**: Secure login and personalized experience using NextAuth.js.
-- **Cloud Storage**: Save and retrieve notes with Supabase.
-- **Modern UI**: Responsive and user-friendly design with Tailwind CSS.
-- **Cross-Device Sync**: Access notes on any device.
+- **Cloud Storage**: Store and retrieve notes with Supabase.
+- **Modern UI**: Clean and responsive user interface using Tailwind CSS.
+
+---
+
+## Roadmap
+
+- [x] Build a simple note-taking app with basic functionality.
+- [ ] Enable tagging and search functionality.
+- [ ] Add AI-powered note generation and summarization.
+- [ ] Introduce real-time collaboration features.
+- [ ] Add offline note-taking support.
 
 ---
 
@@ -33,8 +41,8 @@ In future it will leverages modern technologies such as Vercel AI SDK, Supabase,
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/your-username/your-repo-name
-   cd your-repo-name
+   git clone https://github.com/Samarth061/NoteApp-Njs
+   cd NoteApp-Njs
    ```
 
 2. **Install Dependencies**:
@@ -51,6 +59,17 @@ In future it will leverages modern technologies such as Vercel AI SDK, Supabase,
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
    NEXTAUTH_SECRET=your-nextauth-secret
    AI_API_KEY=your-vercel-ai-api-key
+   ```
+
+   Create a .env file in the root directory and add the following:
+
+   ```bash
+   DATABASE_URL="your-supabase-databaseurl"
+   DIRECT_URL="your-supabase-directurl"
+
+   GOOGLE_CLIENT_ID="your-google-clientid"
+   GOOGLE_CLIENT_SECRET="your-google-clientsecret"
+   NEXTAUTH_URL=http://localhost:3000
    ```
 
 4. **Set Up Prisma**:
@@ -71,31 +90,41 @@ Visit http://localhost:3000 to view the app.
 ## Usage
 
 - Create Notes: Add notes with a user-friendly editor.
-- AI Features: Use AI to summarize or organize your notes.
+- Edit Notes: Edit the title or content of existing notes.
+- Delete Notes: Remove notes you no longer need.
 - Authentication: Log in to access personalized notes and features.
-- Sync Across Devices: Save and retrieve notes from any device with your account.
 
 ## Folder Structure
 
 ```php
 note-app/
 ├── src/
-│   ├── components/    # Reusable UI components
-│   ├── pages/         # Application pages
-│   ├── styles/        # Global and component-specific styles
-│   └── utils/         # Utility functions
-├── prisma/            # Prisma schema and migrations
-├── public/            # Static assets
-└── .env.local         # Environment variables
+│   ├── app/                # Main application directory
+│   │    ├── (notes)/       # Folder for note-related pages and components
+│   │    │   ├── [id]/      # Dynamic folder for individual note pages (e.g., view/edit specific note)
+│   │    │   ├── new/       # Folder for creating new notes
+│   │    ├── api/           # API-related functions (for data management)
+│   │    │   ├── auth/      # Authentication API (sign-in, session management)
+│   │    │   ├── notes/     # API functions for notes (CRUD operations)
+│   │    ├── dashboard/     # Dashboard page and components for the user's notes
+│   │    ├── error/         # Error pages for handling 404, 500, etc.
+│   │    ├── signin/        # Sign-in page and related components
+│   │    ├── globals.tsx    # Global application settings or context
+│   │    ├── layout.tsx     # Main layout component that wraps around pages
+│   │    ├── middleware.tsx # Custom middleware for authentication or authorization
+│   │    ├── page.tsx       # Main entry point for rendering pages
+│
+│   ├── lib/                # Library files for reusable logic or external configurations
+│   ├── components/         # Shared UI components (buttons, inputs, etc.)
+│   ├── types/              # Global types used throughout the app (TypeScript types)
+│   ├── utils/              # Utility functions (helpers, formatters, etc.)
+│
+├── prisma/                 # Prisma schema and migration files
+│
+├── public/                 # Static assets (images, fonts, icons, etc.)
+│
+├── env/                    # Environment variable configurations (for production and dev environments)
 ```
-
-## Roadmap
-
-- [x] Build a simple note-taking app with basic functionality.
-- [ ] Add AI-powered note generation and summarization.
-- [ ] Enable tagging and search functionality.
-- [ ] Introduce real-time collaboration features.
-- [ ] Add offline note-taking support.
 
 ## Acknowledgments:
 
