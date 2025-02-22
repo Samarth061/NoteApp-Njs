@@ -51,7 +51,7 @@ export async function DELETE(req: Request) {
   }
 
   try {
-    const { id } = await req.json(); // Extract ID from the request body
+    const { id } = await req.json(); 
     if (!id) {
       return NextResponse.json({ message: "Note ID is required" }, { status: 400 });
     }
@@ -59,14 +59,50 @@ export async function DELETE(req: Request) {
     const deletedNote = await prisma.note.delete({
       where: {
         id,
-        userId: session.user.id, // Ensure user can only delete their own notes
+        userId: session.user.id, 
       },
     });
 
     return NextResponse.json({ message: "Note deleted", deletedNote }, { status: 200 });
-  } catch (error) {
+  } catch (error: any) {
+    if (error.code === "P2025") {
+      return NextResponse.json({ error: "Note not found" }, { status: 404 });
+    }
     console.error("Error deleting note:", error);
     return NextResponse.json({ error: "Error deleting note" }, { status: 500 });
   }
 }
 
+export async function PATCH(req: Request){
+  const session = await getServerSession(authOptions);
+  if (!session?.user?.id) {
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+  }
+
+  try {
+    const { id, title, content } = await req.json();
+    if (!id) {
+      return NextResponse.json({ message: "Note does not exist" }, { status: 400 });
+    }
+    if (!title) {
+      return NextResponse.json({ message: "Title is required" }, { status: 400 });
+    }
+    if (!content) {
+      return NextResponse.json({ message: "Content is required" }, { status: 400 });
+    }
+
+    const note = await prisma.note.update({
+      where: { id: id }, 
+      data: {
+        title: title, 
+        content: content, 
+      },
+    });
+
+    return NextResponse.json(note, { status: 201 });
+  } catch (error) {
+    console.error("Error updating note:", error);
+    return NextResponse.json({ error: "Error updating note" }, { status: 500 });
+  }
+
+}

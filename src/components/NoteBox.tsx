@@ -75,9 +75,14 @@ export default function NoteBox({
             >
               View
             </Link>
-            <button className="px-4 py-2 text-white bg-gray-500 rounded">
+            <Link
+              className="px-4 py-2 text-white bg-gray-500 rounded"
+              href={{
+                pathname: `/${note.id}/edit`,
+              }}
+            >
               Edit
-            </button>
+            </Link>
           </div>
         </div>
       ))}

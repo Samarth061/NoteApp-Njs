@@ -2,7 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { notFound, redirect } from "next/navigation";
-import DeleteButton from "./DeleteButton";
+import DeleteButton from "../components/DeleteButton";
 
 export default async function NotePage(props: {
   params: Promise<{ id: string }>;
