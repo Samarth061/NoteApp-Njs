@@ -25,17 +25,20 @@ export default async function NotePage(props: {
     }
 
     return (
-      <div className="p-4">
-        <h1 className="text-3xl font-bold">{note.title}</h1>
-        <p className="mt-2 mb-10 text-xl">{note.content}</p>
-        <div className="flex justify-left">
-          <DeleteButton id={id} />
+      <div className="pl-4 max-w-5xl">
+        <h1 className="text-3xl font-bold mb-3">{note.title}</h1>
+        <div className="max-h-72 overflow-y-auto pr-1">
+          <p className="mt-2 text-l break-words">{note.content}</p>
+        </div>
+
+        <div className="flex w-80 justify-between mt-6">
           <Link
             href={"/dashboard"}
             className="bg-green-500 text-white px-5 py-2 rounded"
           >
             Back
           </Link>
+          <DeleteButton id={id} />
         </div>
       </div>
     );
