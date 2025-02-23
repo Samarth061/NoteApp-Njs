@@ -71,7 +71,7 @@ export default function NoteBox({ searchTerm, setNoteCount }: NoteBoxProps) {
                 }}
                 aria-label={`View note titled ${note.title}`}
               >
-                <button className="px-4 py-[5.75] text-white bg-blue-500 rounded ">
+                <button className="px-4 py-[5.75px] text-white bg-blue-500 rounded ">
                   View
                 </button>
               </Link>
@@ -81,7 +81,7 @@ export default function NoteBox({ searchTerm, setNoteCount }: NoteBoxProps) {
                 }}
                 aria-label={`Edit note titled ${note.title}`}
               >
-                <button className="px-4 py-[5.75] text-white bg-gray-500 rounded ">
+                <button className="px-4 py-[5.75px] text-white bg-gray-500 rounded ">
                   Edit
                 </button>
               </Link>

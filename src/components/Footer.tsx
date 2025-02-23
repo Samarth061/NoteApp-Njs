@@ -2,7 +2,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 export default function Footer() {
   return (
     <footer className="w-full bg-gray-800 p-4 text-center items-center text-white">
-      <div className="max-w-6xl ml-[70] flex justify-between items-center">
+      <div className="max-w-6xl ml-[70px] flex justify-between items-center">
         <div className=" text-sm">
           <p>
             Created by <span className="font-semibold">Samarth Shah</span>

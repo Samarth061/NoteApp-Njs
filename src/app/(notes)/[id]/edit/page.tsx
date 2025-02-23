@@ -91,7 +91,7 @@ export default function EditPage() {
 
       <div className="flex max-w-5xl justify-between mt-2 ml-1 mr-1">
         <button
-          className="w-[106.9] h-[40] bg-green-500 text-white rounded"
+          className="w-[106.9px] h-[40px] bg-green-500 text-white rounded"
           onClick={handleUpdateNote}
         >
           {updating ? "Updating..." : "Save"}
