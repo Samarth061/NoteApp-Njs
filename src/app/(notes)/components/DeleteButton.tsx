@@ -34,7 +34,7 @@ const DeleteButton = ({ id }: DeleteButtonProps) => {
     <button
       onClick={handleDelete}
       disabled={loading}
-      className="bg-red-500 text-white px-4 py-2 rounded"
+      className="bg-red-500 text-white px-4 py-2 rounded mr-20"
     >
       {loading ? "Deleting..." : "Delete"}
     </button>

@@ -22,9 +22,10 @@ export default function Dashboard() {
   if (!session) return null;
 
   return (
-    <div className="p-4">
-      <h1>Welcome, {session.user?.name}</h1>
-      <p>This is your dashboard.</p>
+    <div className="pt-1 pl-4 pr-4">
+      <h1 className="font-bold text-2xl gap-3">
+        Welcome to your dashboard, {session.user?.name}
+      </h1>
       <Body />
     </div>
   );

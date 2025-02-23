@@ -32,14 +32,14 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
-      <body className="flex flex-col min-h-screen">
-        <Header />
-        <SessionProvider>
-          <main className="flex-1 overflow-auto">
-            {children} {/* This will render page-specific content */}
-          </main>
-        </SessionProvider>
-        <Footer />
+      <body>
+        <div className="flex flex-col h-screen">
+          <Header />
+          <SessionProvider>
+            <main className="flex-1 overflow-auto ml-10 p-4">{children}</main>
+          </SessionProvider>
+          <Footer />
+        </div>
       </body>
     </html>
   );

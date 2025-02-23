@@ -57,7 +57,7 @@ export default function EditPage() {
 
   return (
     <div className="p-4">
-      <h1 className="text-xl font-bold">Create New Note</h1>
+      <h1 className="text-xl font-bold">Edit Note</h1>
       {error && <p className="text-red-500">{error}</p>}
       <input
         className="block w-full p-2 border my-2"

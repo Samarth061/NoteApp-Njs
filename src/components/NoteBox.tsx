@@ -53,39 +53,46 @@ export default function NoteBox({
   if (notes.length === 0) return <p>No notes found.</p>;
 
   return (
-    <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-2">
-      {filteredNotes.map((note) => (
-        <div
-          key={note.id}
-          className="cursor-pointer p-4 border-2 rounded-md bg-[#0d0e0f] hover:border-blue-700 border-[#0a4d92] transition"
-        >
-          <h2 className="text-xl font-bold mb-2">{note.title}</h2>
-          <p className="text-sm text-gray-400 mb-4">
-            {note.content.length > 100
-              ? `${note.content.slice(0, 97)}...`
-              : note.content}
-          </p>
-          <div className="flex justify-between">
-            <Link
-              className="px-4 py-2 text-white bg-blue-500 rounded"
-              href={{
-                pathname: `/${note.id}`,
-                query: { id: note.id },
-              }}
-            >
-              View
-            </Link>
-            <Link
-              className="px-4 py-2 text-white bg-gray-500 rounded"
-              href={{
-                pathname: `/${note.id}/edit`,
-              }}
-            >
-              Edit
-            </Link>
+    <div className="container mx-auto">
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 mt-2">
+        {filteredNotes.map((note) => (
+          <div
+            key={note.id}
+            className="flex flex-col cursor-pointer p-4 border-2 rounded-md bg-[#0d0e0f] hover:border-blue-700 border-[#0a4d92] transition flex-grow h-[135px]"
+            aria-label={`Note titled ${note.title}`}
+          >
+            <h2 className="text-xl font-bold mb-2 text-white truncate">
+              {note.title}
+            </h2>
+            <p className="text-sm text-gray-400 mb-3 truncate">
+              {note.content}
+            </p>
+            <div className="flex justify-between">
+              <Link
+                href={{
+                  pathname: `/${note.id}`,
+                  query: { id: note.id },
+                }}
+                aria-label={`View note titled ${note.title}`}
+              >
+                <button className="px-4 py-[5.75] text-white bg-blue-500 rounded ">
+                  View
+                </button>
+              </Link>
+              <Link
+                href={{
+                  pathname: `/${note.id}/edit`,
+                }}
+                aria-label={`Edit note titled ${note.title}`}
+              >
+                <button className="px-4 py-[5.75] text-white bg-gray-500 rounded ">
+                  Edit
+                </button>
+              </Link>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
