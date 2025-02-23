@@ -13,11 +13,7 @@ type NoteBoxProps = {
   setNoteCount: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export default function NoteBox({
-  searchTerm,
-  noteCount,
-  setNoteCount,
-}: NoteBoxProps) {
+export default function NoteBox({ searchTerm, setNoteCount }: NoteBoxProps) {
   const [notes, setNotes] = useState<Note[]>([]);
   const [loading, setLoading] = useState(true);
 

@@ -3,7 +3,7 @@ import { signIn } from "next-auth/react";
 
 export default function SignInButton() {
   return (
-    <div className="flex flex-col items-center justify-center mt-20">
+    <div className="max-w-6xl flex flex-col items-center justify-center mt-20">
       <h1 className="text-2xl font-bold p-10">
         Welcome to NoteIt! Sign in to try out my app!
       </h1>

@@ -10,7 +10,7 @@ export default function NewNotePage() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [error, setError] = useState("");
-  const [creating, setCreating] = useState(false);
+  const [creating, _setCreating] = useState(false);
 
   if (!session) {
     return <p>You must be logged in to create a note.</p>;

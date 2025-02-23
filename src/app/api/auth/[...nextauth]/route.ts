@@ -1,5 +1,5 @@
 // app/api/auth/[...nextauth].ts
-import NextAuth, { NextAuthOptions } from "next-auth";
+import NextAuth from "next-auth";
  // Adjust the import path as needed
 import { authOptions } from "@/lib/auth";
 

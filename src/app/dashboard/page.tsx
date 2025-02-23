@@ -1,7 +1,7 @@
 // app/dashboard/page.tsx
 "use client";
 import Body from "@/components/Body";
-import { useSession, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
