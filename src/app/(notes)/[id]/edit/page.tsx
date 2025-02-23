@@ -58,7 +58,14 @@ export default function EditPage() {
 
   return (
     <div className="pl-4 max-w-5xl">
-      <h1 className="pl-[0.5] text-3xl font-bold mb-2">Edit Note</h1>
+      <div className="flex flex-row justify-between">
+        <h1 className="pl-[0.5] text-3xl font-bold mb-2">Edit Note</h1>
+        <DeleteButton
+          className="w-[106.9] h-[40] bg-red-500 text-white rounded"
+          id={id as string}
+        />
+      </div>
+
       {error && <p className="text-red-500">{error}</p>}
 
       <div className="max-h-96 overflow-y-auto px-1">
@@ -90,7 +97,7 @@ export default function EditPage() {
           {updating ? "Updating..." : "Save"}
         </button>
         <button
-          className="px-4 py-2 bg-red-500 text-white rounded"
+          className="px-4 py-2 bg-gray-500 text-white rounded"
           onClick={() => router.push("/dashboard")}
         >
           {updating ? "Discarding..." : "Don't save"}

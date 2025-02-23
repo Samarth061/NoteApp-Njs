@@ -12,7 +12,7 @@ export const authOptions: NextAuthOptions = {
       }),
     ],
     pages: {
-      signIn: "/signin", 
+      signIn: "/", 
     },
     session: {
       strategy: "jwt",
@@ -63,7 +63,7 @@ export const authOptions: NextAuthOptions = {
   
       async redirect({ url, baseUrl }) {
         // After a successful sign in, always redirect to the dashboard.
-        if (url === baseUrl || url === `${baseUrl}/signin`) {
+        if (url === baseUrl) {
           return `${baseUrl}/dashboard`;
         }
         return url;

@@ -5,9 +5,10 @@ import { useRouter } from "next/navigation";
 
 type DeleteButtonProps = {
   id: string;
+  className?: string;
 };
 
-const DeleteButton = ({ id }: DeleteButtonProps) => {
+const DeleteButton = ({ id, className }: DeleteButtonProps) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
@@ -34,7 +35,7 @@ const DeleteButton = ({ id }: DeleteButtonProps) => {
     <button
       onClick={handleDelete}
       disabled={loading}
-      className="bg-red-500 text-white px-4 py-2 rounded"
+      className={`bg-red-500 text-white px-4 py-2 rounded ${className || ""}`}
     >
       {loading ? "Deleting..." : "Delete"}
     </button>

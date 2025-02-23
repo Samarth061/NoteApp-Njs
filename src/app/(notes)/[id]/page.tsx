@@ -12,7 +12,7 @@ export default async function NotePage(props: {
 
   const session = await getServerSession(authOptions);
   if (!session?.user) {
-    redirect("/signin");
+    redirect("/");
   }
 
   try {
@@ -27,11 +27,11 @@ export default async function NotePage(props: {
     return (
       <div className="pl-4 max-w-5xl">
         <h1 className="text-3xl font-bold mb-3">{note.title}</h1>
-        <div className="max-h-72 overflow-y-auto pr-1">
+        <div className="max-h-[296] overflow-y-auto pr-1">
           <p className="mt-2 text-l break-words">{note.content}</p>
         </div>
 
-        <div className="flex w-80 justify-between mt-6">
+        <div className="flex w-80 justify-between mt-5">
           <Link
             href={"/dashboard"}
             className="bg-green-500 text-white px-5 py-2 rounded"

@@ -1,4 +1,5 @@
-import Link from "next/link";
+"use client";
+import { signIn } from "next-auth/react";
 
 export default function SignInButton() {
   return (
@@ -6,11 +7,13 @@ export default function SignInButton() {
       <h1 className="text-2xl font-bold p-10">
         Welcome to NoteIt! Sign in to try out my app!
       </h1>
-      <Link href="/signin">
-        <button className="px-4 py-2 bg-blue-500 text-white rounded">
-          Sign In
-        </button>
-      </Link>
+
+      <button
+        onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+        className="px-4 py-2 bg-blue-500 text-white rounded"
+      >
+        Sign In with Google
+      </button>
     </div>
   );
 }

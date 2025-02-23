@@ -14,7 +14,7 @@ export default function Dashboard() {
     if (status === "loading") return;
     // Redirect to sign in if no session exists
     if (!session) {
-      router.push("/signin");
+      router.push("/");
     }
   }, [session, status, router]);
 

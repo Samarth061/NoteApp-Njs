@@ -10,6 +10,7 @@ export default function NewNotePage() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [error, setError] = useState("");
+  const [creating, setCreating] = useState(false);
 
   if (!session) {
     return <p>You must be logged in to create a note.</p>;
@@ -33,24 +34,44 @@ export default function NewNotePage() {
   };
 
   return (
-    <div className="p-4">
-      <h1 className="text-xl font-bold">Create New Note</h1>
+    <div className="pl-4 max-w-5xl">
+      <h1 className="pl-[0.5] text-3xl font-bold mb-2">New Note</h1>
       {error && <p className="text-red-500">{error}</p>}
-      <input
-        className="block w-full p-2 border my-2"
-        placeholder="Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <textarea
-        className="block w-full p-2 border my-2"
-        placeholder="Content"
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-      />
-      <button className="p-2 bg-blue-500 text-white" onClick={handleCreateNote}>
-        Save
-      </button>
+
+      <div className="max-h-96 overflow-y-auto px-1">
+        <input
+          className="block w-full p-2 border-2 border-gray-600 bg-gray-800 text-white 
+             placeholder-gray-400 focus:border-blue-500 focus:ring-2 
+             focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 
+             my-2 rounded"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <textarea
+          className="h-56 w-full p-2 border-2 border-gray-600 bg-gray-800 text-white 
+             placeholder-gray-400 focus:border-blue-500 focus:ring-2 
+             focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 
+             my-2 rounded resize-none"
+          placeholder="Content"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+        />
+      </div>
+      <div className="flex max-w-5xl justify-between mt-2 ml-1 mr-1">
+        <button
+          className="w-[106.9] h-[40] bg-green-500 text-white rounded"
+          onClick={handleCreateNote}
+        >
+          {creating ? "Creating..." : "Create"}
+        </button>
+        <button
+          className="px-4 py-2 bg-red-500 text-white rounded"
+          onClick={() => router.push("/dashboard")}
+        >
+          {creating ? "Discarding..." : "Discard"}
+        </button>
+      </div>
     </div>
   );
 }
