@@ -35,7 +35,7 @@ export default function NewNotePage() {
 
   return (
     <div className="pl-4 max-w-5xl">
-      <h1 className="pl-[0.5] text-3xl font-bold mb-2">New Note</h1>
+      <h1 className="pl-[0.5px] text-3xl font-bold mb-2">New Note</h1>
       {error && <p className="text-red-500">{error}</p>}
 
       <div className="max-h-96 overflow-y-auto px-1">
@@ -60,7 +60,7 @@ export default function NewNotePage() {
       </div>
       <div className="flex max-w-5xl justify-between mt-2 ml-1 mr-1">
         <button
-          className="w-[106.9] h-[40] bg-green-500 text-white rounded"
+          className="w-[106.9px] h-[40px] bg-green-500 text-white rounded"
           onClick={handleCreateNote}
         >
           {creating ? "Creating..." : "Create"}
